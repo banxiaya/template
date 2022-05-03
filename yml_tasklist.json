@@ -1,0 +1,109 @@
+{
+  "name": "yml脚本点定时任务订阅",
+  "desc": "无",
+  "date": "2022-05-03 11:32:08",
+  "author": "https://t.me/yml_tg",
+  "resource": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_cron.json",
+  "list": [
+    {
+      "name": "吃对了麻",
+      "type": "cron",
+      "time": "35 7 * * *",
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/cdlm/cdlm.js"
+      }
+    },
+    {
+      "name": "超有惠",
+      "type": "cron",
+      "time": "30 7 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/cyh/cyh.js"
+      }
+    },
+    {
+     "name": "抖音果园",
+      "type": "cron",
+      "time": "10,40 8,12,17,23 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/dygy/dygy.js"
+      }
+    },
+    {
+      "name": "康师傅",
+      "type": "cron",
+      "time": "18 8 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/ksf/ksf.js"
+      }
+    },
+    {
+      "name": "金砖矿工",
+      "type": "cron",
+      "time": "0 * * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/jzkg/jzkg.js"
+      }
+    },
+    {
+      "name": "上海贵酒股份 小程序",
+      "type": "cron",
+      "time": "30 7 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/shgjgf/shgjgf.js"
+      }
+    },
+    {
+      "name": "太平洋汽车",
+      "type": "cron",
+      "time": "15 23 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/tpyqc/tpyqc.js"
+      }
+    },
+    {
+      "name": "骁龙会",
+      "type": "cron",
+      "time": "18 7 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/xlh/xlh.js"
+      }
+    },
+    {
+      "name": "永川头条",
+      "type": "cron",
+      "time": "34 10 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/yctt/yctt.js"
+      }
+    },
+    {
+      "name": "有道词典",
+      "type": "cron",
+      "time": "12 7 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/ydcd/ydcd.js"
+      }
+    }
+
+  ]
+}
