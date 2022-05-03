@@ -85,6 +85,16 @@
       }
     },
     {
+      "name": "咸鱼要躺平",
+      "type": "cron",
+      "time": "5 12 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://raw.githubusercontent.com/yml2213/javascript/master/xyytp/xyytp.js"
+      }
+    },
+    {
       "name": "永川头条",
       "type": "cron",
       "time": "34 10 * * *",
