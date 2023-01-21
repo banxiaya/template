@@ -185,3 +185,23 @@ http://10.10.1.125:5678/bestv.php?id=fztd8m/8000000
 http://10.10.1.125:5678/bestv.php?id=jingsepd8m/8000000
 #EXTINF:-1,tvg-id="魅力足球" tvg-name="魅力足球" tvg-logo="https://epg.112114.xyz/logo/魅力足球.png" group-title="其他",魅力足球 8M
 http://10.10.1.125:5678/bestv.php?id=mlyyhd8m/8000000
+#EXTINF:-1,tvg-id="咪咕1" tvg-name="咪咕1" tvg-logo="https://epg.112114.xyz/logo/咪咕1.png" group-title="咪咕",咪咕1
+http://39.135.134.67/000000001000/3000000001000028638/index.m3u8
+#EXTINF:-1,tvg-id="咪咕2" tvg-name="咪咕2" tvg-logo="https://epg.112114.xyz/logo/咪咕2.png" group-title="咪咕",咪咕2
+http://39.135.134.67/000000001000/3000000001000008379/index.m3u8
+#EXTINF:-1,tvg-id="咪咕3" tvg-name="咪咕3" tvg-logo="https://epg.112114.xyz/logo/咪咕3.png" group-title="咪咕",咪咕3
+http://39.135.134.67/000000001000/3000000001000008001/index.m3u8
+#EXTINF:-1,tvg-id="咪咕4" tvg-name="咪咕4" tvg-logo="https://epg.112114.xyz/logo/咪咕4.png" group-title="咪咕",咪咕4
+http://39.135.134.67/000000001000/3000000001000031494/index.m3u8
+#EXTINF:-1,tvg-id="咪咕5" tvg-name="咪咕5" tvg-logo="https://epg.112114.xyz/logo/咪咕5.png" group-title="咪咕",咪咕5
+http://39.135.134.67/000000001000/3000000001000008176/index.m3u8
+#EXTINF:-1,tvg-id="咪咕6" tvg-name="咪咕6" tvg-logo="https://epg.112114.xyz/logo/咪咕6.png" group-title="咪咕",咪咕6
+http://39.135.134.67/000000001000/3000000001000010948/index.m3u8
+#EXTINF:-1,tvg-id="咪咕7" tvg-name="咪咕7" tvg-logo="https://epg.112114.xyz/logo/咪咕7.png" group-title="咪咕",咪咕7
+http://39.135.134.67/000000001000/3000000001000007218/index.m3u8
+#EXTINF:-1,tvg-id="咪咕8" tvg-name="咪咕8" tvg-logo="https://epg.112114.xyz/logo/咪咕8.png" group-title="咪咕",咪咕8
+http://39.135.134.67/000000001000/3000000001000005308/index.m3u8
+#EXTINF:-1,tvg-id="咪咕9" tvg-name="咪咕9" tvg-logo="https://epg.112114.xyz/logo/咪咕9.png" group-title="咪咕",咪咕9
+http://39.135.134.67/000000001000/3000000001000005969/index.m3u8
+#EXTINF:-1,tvg-id="咪咕10" tvg-name="咪咕10" tvg-logo="https://epg.112114.xyz/logo/咪咕10.png" group-title="咪咕",咪咕10
+http://39.135.134.67/000000001000/3000000001000026778/index.m3u8
