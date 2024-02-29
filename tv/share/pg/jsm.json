@@ -81,7 +81,7 @@
       "playerType": 1,
       "ext": {
         "server": "http://goulanzi.yuzhoukeji.top/api.php/app/",
-        "mackey": "toudongxidegou88|qunimagebishabib",
+        "mackey": "toudongxidegou88|qunimagebishabi9",
         "danmu": true
       }
     },
@@ -155,6 +155,18 @@
             "filterable": 1,
 	    "timeout":60,
             "api": "./js/lf_ikanbot5_2_min.js"
+        },
+		{
+            "key": "Taohuazu",
+            "name": "桃花族",
+            "type": 3,
+            "api": "csp_Taohuazu",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 0,
+            "timeout": 60,
+            "ext": "http://thze.cc"
         },
 		{"key":"Local","name":"本地","type":3,"api":"csp_Local"},
 		{"key":"PikPakShare","name":"PikPak分享","type":3,"api":"csp_PikPakShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"./lib/tokenm.json$$$./lib/pikpakclass.json$$$./lib/pikpakclass.json.txt.gz"},
