@@ -33,6 +33,7 @@
       "changeable": 1,
 	  "jar": "./jar/王小二_spider.jar"
     },
+		{"key": "csp_appys_影盒","name": "❤️影探主接口|4K","type": 3,"api": "csp_AppYsV2","jar":"http://www.lyyytv.cn/yt/yt.jar","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": "http://cms345.lyyytv.cn/api.php/app/"},
 		{"key":"Wogg","name":"玩偶哥哥|网盘","type":3,"api":"csp_Wogg","quickSearch":1, "changeable":1, "filterable":1, "timeout":60, "ext":"./lib/tokenm.json$$$https://wogg.xyz/$$$null$$$1$$$./lib/wogg.json"},
 		{"key":"Moli","name":"HDmoli|网盘","type":3,"api":"csp_Moli","quickSearch":1, "changeable":1, "filterable":1, "timeout":60, "ext":"./lib/tokenm.json$$$https://www.hdmoli.pro/$$$null$$$1$$$./lib/moli.json"},
 		{"key":"影视车","name":"影视车|网盘","type":3,"api":"csp_Wogg","quickSearch":1, "changeable":1, "filterable":1, "timeout":60, "ext":"./lib/tokenm.json$$$https://www.weixine.net/$$$null$$$1$$$./lib/wogg.json"},
