@@ -20,10 +20,6 @@
 			"changeable": 0,
 			"ext":"./lib/tokenm.json"
 		},
-		
-		{"key":"drpy_js_磁力熊","name":"磁力熊[js]|索引","type":3,"api":"./lib/drpy2.min.js","ext":"./js/cilixiongp.js","playerType":"1", "searchable":0, "quickSearch":0, "changeable":1,
-			"indexs":1
-		},
 		{
       "key": "Fangniu4k",
       "name": "🇨🇳放牛┃TV┃App",
@@ -32,6 +28,18 @@
       "searchable": 1,
       "changeable": 1,
 	  "jar": "./jar/王小二_spider.jar"
+    },
+	        {
+      "key": "看球",
+      "name": "看球",
+      "type": 3,
+      "api": "csp_Kanqiu",
+      "searchable": 1,
+      "changeable": 0,
+      "style": {
+        "type": "list"
+      },
+      "timeout": 25
     },
 		{"key": "csp_appys_影盒","name": "❤️影探主接口|4K","type": 3,"api": "csp_AppYsV2","jar":"http://www.lyyytv.cn/yt/yt.jar","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": "http://cms345.lyyytv.cn/api.php/app/"},
 		{"key":"Wogg","name":"玩偶哥哥|网盘","type":3,"api":"csp_Wogg","quickSearch":1, "changeable":1, "filterable":1, "timeout":60, "ext":"./lib/tokenm.json$$$https://wogg.xyz/$$$null$$$1$$$./lib/wogg.json"},
@@ -105,7 +113,7 @@
 	    "timeout":60,
             "api": "./js/lf_ikanbot5_2_min.js"
         },
-		
+		{"key":"drpy_js_磁力熊","name":"磁力熊[js]|索引","type":3,"api":"./lib/drpy2.min.js","ext":"./js/cilixiongp.js","playerType":"1", "searchable":0, "quickSearch":0, "changeable":1,"indexs":1},
 		{"key":"Dovx", "name": "阿里|Dovx", "type": 3, "api": "csp_Dovx", "searchable": 1, "quickSearch": 1, "filterable": 0, "timeout":30, "ext":"./lib/tokenm.json" },
 		{"key":"Gitcafe", "name": "阿里|小纸条", "type": 3, "api": "csp_Gitcafe", "searchable": 1, "quickSearch": 1, "filterable": 0, "timeout":30, "ext":"./lib/tokenm.json" },
 		{
