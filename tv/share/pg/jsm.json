@@ -779,7 +779,7 @@
 				"playerType": 1,
 				"url": "http://10.10.1.125:5000/4gtv.m3u",
 				"ua": "okhttp/3.12.13",
-		
+		                "epg": "https://assets.livednow.com/?ch={name}&date={date}",
 				"logo": "https://epg.112114.xyz/logo/{name}.png"
 			},
 			{
