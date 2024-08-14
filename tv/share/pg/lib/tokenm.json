@@ -24,7 +24,7 @@
 "thunder_vip_thread_limit":2,
 "thunder_flags":"4k|4kz|auto",
 "aliproxy":"",
-"aliproxy_url":"",
+"aliproxy_url":"./aliproxy.gz;md5=74896375dbf7b91c5ed19f5964f90432",
 "proxy":"",
 "danmu":true,
 "quark_danmu":true,
@@ -64,12 +64,12 @@
 "singbox_subscribe_url":"",
 "singbox_clash2singbox_url":"./clash2singbox.gz",
 "singbox_template_url":"./singbox.json",
-"pan115_cookie":"",
+"pan115_cookie":"acw_tc=784e2ca917229473180296410e0fa325afe36e4ac30cbd39b22a9ea5004d89; USERSESSIONID=f2639bdac55d9cd6f41c6ddf9153576ee6d4a3d60ab196ba43da45fc7fdc264c; UID=326235555_A1_1722947436; CID=65dcc3c397b0050e2fce4eb03cb6b5bb; SEID=6aa041e9247fa9a2b8269f2cfe6bcad1d0139f4b8c71ccc1bd38e4b775e345bfb5ab52d08a773b41c060055913f859325d4a87025b5519f8cd0d69fc; PHPSESSID=2mh42cod1bm4f0sq6t5ko4tr5h; 115_lang=zh",
 "pan115_thread_limit":0,
 "pan115_vip_thread_limit":0,
 "pan115_is_vip":false,
 "pan115_flags":"4kz",
 "pan115_auto_delete":true,
 "pan115_delete_code":"",
-"pan_order":"ali|quark|uc|115|yd|thunder|pikpak"
+"pan_order":"115|quark|ali|uc|yd|thunder|pikpak"
 }
