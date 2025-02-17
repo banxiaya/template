@@ -1,0 +1,660 @@
+mixed-port: 7890
+bind-address: "*" #绑定IP地址
+allow-lan: true
+mode: rule # 模式
+log-level: error # Bin:reduce logs as much as possible to try to reduce memory usage
+external-controller: 0.0.0.0:9090
+clash-for-android:
+  append-system-dns: false
+experimental:
+  sniff-tls-sni: true
+find-process-mode: strict # 匹配所有进程
+tcp-concurrent: true # tcp 并发模式
+ipv6: true #windows建议开启
+
+# ui部分
+secret: "654321"
+external-ui: ./ui
+
+# fakeip 本地存储，省略DNS查询
+profile:
+  tracing: true
+  store-selected: true # 存储 select 选择记录
+  store-fake-ip: true # 持久化 fake-ip
+
+# Tun 配置 Windows使用
+tun:
+  enable: true #PC端开启 路由器不开启
+  stack: system # gvisor / lwip
+  dns-hijack:
+    - 0.0.0.0:53 # 需要劫持的 DNS
+  auto-route: true # 自动设置全局路由，可以自动将全局流量路由进入tun网卡。
+  auto-detect-interface: true # 自动识别出口网卡
+
+dns:
+  enable: true # 关闭将使用系统 DNS
+  prefer-h3: true # 开启 DoH 支持 HTTP/3，将并发尝试
+  listen: ":53" # 开启 DNS 服务器监听ipv4/ipv6
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 223.5.5.5
+    - 8.8.4.4
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+    - tls://223.5.5.5:853
+    - tls://223.6.6.6:853
+    - tls://120.53.53.53
+    - tls://1.12.12.12
+  fallback:
+    - https://1.0.0.1/dns-query
+    - https://public.dns.iij.jp/dns-query
+    - tls://8.8.4.4:853
+  fallback-filter:
+    geoip: false
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+      - 127.0.0.1/32
+    domain:
+      - +.facebook.com
+      - +.twitter.com
+      - +.google.com
+      - +.googleapis.com
+      - +.google.cn
+      - +.googleapis.cn
+      - +.xn--ngstr-lra8j.com
+      - +.googlevideo.com
+      - +.gvt1.com
+      - +.gmail.com
+      - +.youtube.com
+      - +.youtu.be
+      - +.gvt0.com
+      - +.gvt2.com
+      - +.gvt3.com
+      - +.gstatic.com
+      - +.265.com
+      - +.2mdn.net
+      - +.app-measurement.com
+      - +.c.admob.com
+      - +.clickserve.dartsearch.net
+      - +.crl.pki.goog
+      - +.doubleclick.net
+      - +.firebase-settings.crashlytics.com
+      - +.google-analytics.com
+      - +.googleadservices.com
+      - +.googleanalytics.com
+      - +.googleoptimize.com
+      - +.googlesyndication.com
+      - +.googletagmanager.com
+      - +.googletagservices.com
+  fake-ip-filter:
+    - "*.lan"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.home.arpa"
+    - time.*.com
+    - time.*.gov
+    - time.*.edu.cn
+    - time.*.apple.com
+    - time1.*.com
+    - time2.*.com
+    - time3.*.com
+    - time4.*.com
+    - time5.*.com
+    - time6.*.com
+    - time7.*.com
+    - ntp.*.com
+    - ntp1.*.com
+    - ntp2.*.com
+    - ntp3.*.com
+    - ntp4.*.com
+    - ntp5.*.com
+    - ntp6.*.com
+    - ntp7.*.com
+    - "*.time.edu.cn"
+    - "*.ntp.org.cn"
+    - +.pool.ntp.org
+    - time1.cloud.tencent.com
+    - music.163.com
+    - "*.music.163.com"
+    - "*.126.net"
+    - musicapi.taihe.com
+    - music.taihe.com
+    - songsearch.kugou.com
+    - trackercdn.kugou.com
+    - "*.kuwo.cn"
+    - api-jooxtt.sanook.com
+    - api.joox.com
+    - joox.com
+    - y.qq.com
+    - "*.y.qq.com"
+    - streamoc.music.tc.qq.com
+    - mobileoc.music.tc.qq.com
+    - isure.stream.qqmusic.qq.com
+    - dl.stream.qqmusic.qq.com
+    - aqqmusic.tc.qq.com
+    - amobile.music.tc.qq.com
+    - "*.xiami.com"
+    - "*.music.migu.cn"
+    - music.migu.cn
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+    - msftconnecttest.com
+    - msftncsi.com
+    - localhost.ptlogin2.qq.com
+    - localhost.sec.qq.com
+    - +.srv.nintendo.net
+    - +.stun.playstation.net
+    - xbox.*.microsoft.com
+    - xnotify.xboxlive.com
+    - +.ipv6.microsoft.com
+    - +.battlenet.com.cn
+    - +.wotgame.cn
+    - +.wggames.cn
+    - +.wowsgame.cn
+    - +.wargaming.net
+    - proxy.golang.org
+    - stun.*.*
+    - stun.*.*.*
+    - +.stun.*.*
+    - +.stun.*.*.*
+    - +.stun.*.*.*.*
+    - heartbeat.belkin.com
+    - "*.linksys.com"
+    - "*.linksyssmartwifi.com"
+    - "*.router.asus.com"
+    - mesu.apple.com
+    - swscan.apple.com
+    - swquery.apple.com
+    - swdownload.apple.com
+    - swcdn.apple.com
+    - swdist.apple.com
+    - lens.l.google.com
+    - stun.l.google.com
+    - "*.square-enix.com"
+    - "*.finalfantasyxiv.com"
+    - "*.ffxiv.com"
+    - "*.ff14.sdo.com"
+    - ff.dorado.sdo.com
+    - "*.mcdn.bilivideo.cn"
+    - +.media.dssott.com
+    - +.pvp.net
+proxies:
+  - {
+      "name": "Hysteria2",
+      "type": "hysteria2",
+      "server": "107.173.192.13",
+      "port": 443,
+      "password": "h3J2GtVU1p2idfV",
+      "auth": "h3J2GtVU1p2idfV",
+      "sni": "bing.com",
+      "skip-cert-verify": true,
+    } # iPhone的stash需要auth字段，他被用作password。
+  - {
+      "name": "Hysteria2-JD",
+      "type": "hysteria2",
+      "server": "117.72.72.11",
+      "port": 34483,
+      "password": "b388c953",
+      # "auth": "b388c953",
+      "sni": "www.bing.com",
+      "skip-cert-verify": true,
+    } # iPhone的stash需要auth字段，他被用作password。
+  - {
+      "name": "bingow.serv00.vless",
+      "type": "vless",
+      "server": "bingow.serv00.net",
+      "port": 51413,
+      "uuid": "ab746ed1-42b2-11ef-8924-3cecef0f521e",
+      "skip-cert-verify": true,
+      "udp": true,
+      "network": "ws",
+      "servername": "bingow.serv00.net",
+      "ws-opts": { "path": "/", "headers": { "host": "bingow.serv00.net" } },
+    }
+  - {name: 美国|03奈飞ChatGPT1, server: twjpzz2.595780.xyz, port: 20263, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: usmax03.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 美国|03奈飞ChatGPT快, server: twjpzznew.564659.xyz, port: 63639, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: usmax03.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 美国|05奈飞ChatGPT快, server: twjpzznew.564659.xyz, port: 49838, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: usmax051.767887.xyz, skip-cert-verify: true, udp: true}
+  - {name: 新加坡快, server: sg1234.595780.xyz, port: 1123, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: sg1234.595780.xyz, skip-cert-verify: true, udp: true}
+  - {name: 防失联页https://github.com/feiniaoyun, server: twjpzznew.564659.xyz, port: 63227, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2jp04162531be-29a9-2764-8627-51a5f4436fbd.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 新加坡|04|直连快, server: 1sgmax04.564659.xyz, port: 1123, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 1sgmax04.564659.xyz, skip-cert-verify: true, udp: true}
+  - {name: 新加坡|03直连快, server: 2sg03.564659.xyz, port: 917, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2sg03.564659.xyz, skip-cert-verify: true, udp: true}
+  - {name: 新加坡|02直连2快, server: 2sg002ff0f283d-2433-bbbe-4d7a-59990b8b8b74.233235.xyz, port: 816, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2sg002ff0f283d-2433-bbbe-4d7a-59990b8b8b74.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 香港|01|隧道, server: twjpzz2.595780.xyz, port: 37107, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2jp04162531be-29a9-2764-8627-51a5f4436fbd.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 新加坡|01隧道快, server: twjpzz2.595780.xyz, port: 17354, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2sg03.564659.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾01直连ChatGPT3, server: tw2.233235.xyz, port: 725, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: tw2.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾|01奈飞ChatGPT2, server: 2gzdx21.233235.xyz, port: 8080, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2gzdx21.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾|05奈飞ChatGPT4, server: tw5.233235.xyz, port: 2222, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: tw5.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾02奈飞ChatGPT, server: 6gzdx2.233235.xyz, port: 712, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 6gzdx2.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾|04奈飞ChatGPT3, server: sg1111.233235.xyz, port: 8080, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: sg1111.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾|05奈飞ChatGPT5, server: tw4.233235.xyz, port: 670, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: tw4.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾|02奈飞ChatGPTC, server: tw7.233235.xyz, port: 3455, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: tw7.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾|02奈飞ChatGPT0, server: tw1.233235.xyz, port: 34555, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: tw1.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 台湾|03奈飞ChatGPT1, server: tw60.233235.xyz, port: 703, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: tw60.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 美国|05奈飞ChatGPT0, server: twjpzz2.595780.xyz, port: 12380, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: usmax051.767887.xyz, skip-cert-verify: true, udp: true}
+  - {name: 日本4隧道快, server: twjpzznew.564659.xyz, port: 13608, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2jp04162531be-29a9-2764-8627-51a5f4436fbd.233235.xyz, skip-cert-verify: true, udp: true}
+  - {name: 美国|02|直连, server: hyfnus02.767887.xyz, port: 1124, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: hyfnus02.767887.xyz, skip-cert-verify: true, udp: true}
+  - {name: 电报群https://t.me/feiniaoyunjichang, server: 2sg13cb2b6b4d-9b32-01a8-7574-376a171bb832.170203.xyz, port: 820, type: trojan, password: 39582256-8bac-4fb1-8646-3f76482da673, sni: 2sg13cb2b6b4d-9b32-01a8-7574-376a171bb832.170203.xyz, skip-cert-verify: true, udp: true}
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 美国自动选择
+      - ♻️ 美国自动选择Clean
+      - Hysteria2
+      - Hysteria2-JD
+      - bingow.serv00.vless
+      - 飞鸟云
+      - 飞鸟云自动选择
+      - DIRECT
+  - name: VPS-JD
+    type: select
+    proxies:
+      - Hysteria2-JD
+      - DIRECT
+  - name: ♻️ 美国自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 30
+    proxies:
+      - Hysteria2
+      - 美国|03奈飞ChatGPT1
+      - 美国|03奈飞ChatGPT快
+      - 美国|05奈飞ChatGPT快
+  - name: ♻️ 美国自动选择Clean
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 30
+    proxies:
+      - 美国|03奈飞ChatGPT1
+      - 美国|03奈飞ChatGPT快
+      - 美国|05奈飞ChatGPT快
+  - name: ♻️ 台湾自动选择   # 新加坡的不如台湾的干净
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 30
+    proxies:
+      - 台湾01直连ChatGPT3
+      - 台湾|01奈飞ChatGPT2
+      - 台湾|05奈飞ChatGPT4
+      - 台湾02奈飞ChatGPT
+      - 台湾|04奈飞ChatGPT3
+      - 台湾|05奈飞ChatGPT5
+      - 台湾|02奈飞ChatGPTC
+      - 台湾|02奈飞ChatGPT0
+      - 台湾|03奈飞ChatGPT1
+  - name: 飞鸟云
+    type: select
+    proxies:
+      - 新加坡快
+      - 防失联页https://github.com/feiniaoyun
+      - 新加坡|04|直连快
+      - 新加坡|03直连快
+      - 新加坡|02直连2快
+      - 香港|01|隧道
+      - 新加坡|01隧道快
+      - 台湾01直连ChatGPT3
+      - 台湾|01奈飞ChatGPT2
+      - 台湾|05奈飞ChatGPT4
+      - 台湾02奈飞ChatGPT
+      - 台湾|04奈飞ChatGPT3
+      - 台湾|05奈飞ChatGPT5
+      - 台湾|02奈飞ChatGPTC
+      - 台湾|02奈飞ChatGPT0
+      - 台湾|03奈飞ChatGPT1
+      - 美国|05奈飞ChatGPT0
+      - 日本4隧道快
+      - 美国|02|直连
+      - 电报群https://t.me/feiniaoyunjichang
+      - 美国|03奈飞ChatGPT1
+      - 美国|03奈飞ChatGPT快
+      - 美国|05奈飞ChatGPT快
+  - name: 飞鸟云自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 30
+    proxies:
+      - 新加坡快
+      - 防失联页https://github.com/feiniaoyun
+      - 新加坡|04|直连快
+      - 新加坡|03直连快
+      - 新加坡|02直连2快
+      - 香港|01|隧道
+      - 新加坡|01隧道快
+      - 台湾01直连ChatGPT3
+      - 台湾|01奈飞ChatGPT2
+      - 台湾|05奈飞ChatGPT4
+      - 台湾02奈飞ChatGPT
+      - 台湾|04奈飞ChatGPT3
+      - 台湾|05奈飞ChatGPT5
+      - 台湾|02奈飞ChatGPTC
+      - 台湾|02奈飞ChatGPT0
+      - 台湾|03奈飞ChatGPT1
+      - 美国|05奈飞ChatGPT0
+      - 日本4隧道快
+      - 美国|02|直连
+      - 电报群https://t.me/feiniaoyunjichang
+      - 美国|03奈飞ChatGPT1
+      - 美国|03奈飞ChatGPT快
+      - 美国|05奈飞ChatGPT快
+rules:
+  - DOMAIN-SUFFIX,weixin.qq.com,VPS-JD
+  - DOMAIN-SUFFIX,ip138.com,VPS-JD
+
+  - DOMAIN-SUFFIX,ads-api.twitter.com,REJECT
+  - GEOSITE,x,♻️ 美国自动选择Clean
+  
+  - GEOSITE,tiktok,♻️ 美国自动选择Clean
+  - GEOSITE,bytedance,VPS-JD
+
+  - GEOSITE,tencent,VPS-JD
+  - GEOSITE,bilibili,VPS-JD
+  - GEOSITE,zhihu,VPS-JD
+  - GEOSITE,sina,VPS-JD
+  - GEOSITE,xiaohongshu,VPS-JD
+
+  - DOMAIN-SUFFIX,http-inputs-notion.splunkcloud.com,REJECT
+  - GEOSITE,notion,DIRECT
+  - GEOSITE,figma,DIRECT
+  - DOMAIN-SUFFIX,livekit.cloud,DIRECT  # chatgpt plusai web voice mode
+  - DOMAIN-SUFFIX,livekit.io,DIRECT  # chatgpt plusai web voice mode
+  
+  - GEOSITE,anthropic,♻️ 美国自动选择Clean  # 论文网站
+  - GEOSITE,cursor,飞鸟云自动选择
+  - DOMAIN-SUFFIX,wandb.ai,♻️ 美国自动选择Clean # AI 训练，自建的vps经常连不上
+  - DOMAIN-SUFFIX,ipify.org,🚀 节点选择 # 用于获取公网外网IP
+  - DOMAIN-SUFFIX,hims.com,飞鸟云自动选择 # 用于获取公网外网IP
+  - GEOSITE,perplexity,飞鸟云自动选择
+  - DOMAIN-SUFFIX,mssdk.bytedance.com,DIRECT # TikTokDownloader需要用来获取token
+  
+  - GEOSITE,onedrive,REJECT
+  # - GEOSITE,CATEGORY-ADS-ALL,REJECT   # 为了调研谷歌广告不得已关闭
+  # - GEOSITE,npmjs,🚀 节点选择
+  # - GEOSITE,github,🚀 节点选择
+  - GEOSITE,CATEGORY-DEV,🚀 节点选择
+  - GEOSITE,SCIENCEDIRECT,♻️ 美国自动选择Clean  # 论文网站
+
+  - DOMAIN-SUFFIX,hastobe.us,DIRECT
+  - DOMAIN-SUFFIX,serv00.net,DIRECT
+
+  - GEOSITE,JD,DIRECT
+
+  #   - GEOSITE,CATEGORY-PUBLIC-TRACKER,🚀 节点选择     # 磁力种子，没用呀，代理不了
+  #   - DOMAIN-SUFFIX,rarbg.to,🚀 节点选择    # 磁力种子，上面的没包含全，没用呀，代理不了
+
+  - GEOSITE,QIHOO360,REJECT
+
+  - DOMAIN-SUFFIX,xp.apple.com,REJECT
+  - DOMAIN-SUFFIX,probe.icloud.com,REJECT
+  - DOMAIN-SUFFIX,cstat.cdn-apple.com,REJECT
+  - DOMAIN-SUFFIX,feedbackws.icloud.com,REJECT
+  - GEOSITE,APPLE,🚀 节点选择
+  #   - GEOSITE,APPLE,DIRECT
+
+  - DOMAIN-SUFFIX,improving.duckduckgo.com,REJECT
+  - GEOSITE,DUCKDUCKGO,🚀 节点选择
+  # Microsoft
+  # 自己添加的规则，注意，如果是通过IP进行匹配，则一定要后面加上no-resolve，否则则需要先进行DNS解析请求（如未缓存）
+  # OpenClash doesn't support DOMAIN-REGEX
+  #   通过观察VPS Adguard Home总结的。
+  - DOMAIN-SUFFIX,microsoftapp.net,REJECT
+  - DOMAIN-SUFFIX,fp.msedge.net,REJECT
+  #   - DOMAIN-SUFFIX,self.events.data.microsoft.com,🚀 节点选择    # 好像和Edge的drop有关，又好像每关
+  #   - DOMAIN-SUFFIX,mobile.events.data.microsoft.com,🚀 节点选择  # Authenticator App backup update
+  - DOMAIN-SUFFIX,events.data.microsoft.com,REJECT
+  - DOMAIN-SUFFIX,events.data.msn.com,REJECT
+  - DOMAIN-SUFFIX,pipe.aria.microsoft.com,REJECT
+  - DOMAIN-SUFFIX,api.edgeoffer.microsoft.com,REJECT
+  - DOMAIN-SUFFIX,measure.office.com,REJECT
+  #   - DOMAIN-SUFFIX,www.msn.com,🚀 节点选择 # MSN news. It turns out that news also needs a lot else to load
+  - DOMAIN-SUFFIX,msn.com,REJECT
+  - DOMAIN-SUFFIX,msn.cn,REJECT
+  - DOMAIN-SUFFIX,in.appcenter.ms,REJECT
+  - DOMAIN-SUFFIX,activity.windows.com,REJECT
+  - DOMAIN-SUFFIX,nel.measure.office.net,REJECT
+  - DOMAIN-SUFFIX,c.bing.com,REJECT
+  - DOMAIN-SUFFIX,g.bing.com,REJECT
+  - DOMAIN-SUFFIX,collector.github.com,REJECT
+  - DOMAIN-SUFFIX,nelreports.net,REJECT # affecting Edge
+  - DOMAIN-SUFFIX,augloop.office.com,REJECT # affecting Edge
+  - DOMAIN-SUFFIX,vscode-sync.trafficmanager.net,REJECT # affecting Edge
+  - DOMAIN-SUFFIX,config.edge.skype.com,REJECT # affecting Edge
+  - DOMAIN-SUFFIX,contentsync.onenote.com,REJECT # affecting Edge
+  - DOMAIN-SUFFIX,nav-edge.smartscreen.microsoft.com,REJECT # affecting Edge
+  - DOMAIN-SUFFIX,browser-intake-datadoghq.com,REJECT
+  - DOMAIN-SUFFIX,http-intake.logs.datadoghq.com,REJECT
+  - DOMAIN-SUFFIX,g.live.com,REJECT
+  - DOMAIN-SUFFIX,applicationinsights.azure.com,REJECT
+  - GEOSITE,MICROSOFT,🚀 节点选择
+  # - GEOSITE,MICROSOFT,DIRECT
+  # Google
+  - DOMAIN-SUFFIX,withgoogle.com,REJECT
+  - DOMAIN-SUFFIX,www.google-analytics.com,REJECT
+  - DOMAIN-SUFFIX,fundingchoicesmessages.google.com,REJECT
+
+  # 以下某一个或几个的 googleapis.com 会导致YouTube视频只能播放到59秒或1分钟。
+  # 上述问题困扰了我一个月，直到2024年12月14日，在V2EX发现 https://www.v2ex.com/t/1096868
+  # - DOMAIN-SUFFIX,jnn-pa.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,footprints-pa.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,firebaseinstallations.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,firebaselogging-pa.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,locationhistory-pa.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,semanticlocation-pa.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,infinitedata-pa.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,optimizationguide-pa.googleapis.com,REJECT
+  # - DOMAIN-SUFFIX,firebaseremoteconfig.googleapis.com,REJECT # New Zealand Radio APP
+  - DOMAIN-SUFFIX,gvt2.com,REJECT
+  - DOMAIN-SUFFIX,gvt3.com,REJECT
+  - GEOSITE,GOOGLE,🚀 节点选择 # youtube pages always require verifications.
+
+  - DOMAIN-SUFFIX,pangle.io,REJECT # New Zealand Radio APP
+  - DOMAIN-SUFFIX,mh616.org,REJECT
+  - DOMAIN-SUFFIX,isnssdk.com,REJECT
+  - DOMAIN-SUFFIX,myadsget.com,REJECT
+  - DOMAIN-SUFFIX,telemetry.mozilla.org,REJECT
+  - DOMAIN-SUFFIX,normandy.cdn.mozilla.net,REJECT
+  - DOMAIN-SUFFIX,s.deepl.com,REJECT
+  - DOMAIN-SUFFIX,intel.com,REJECT
+  - DOMAIN-SUFFIX,q.stripe.com,REJECT
+  - DOMAIN-SUFFIX,m.stripe.com,REJECT
+  - DOMAIN-SUFFIX,strpst.com,REJECT
+  - DOMAIN-SUFFIX,ravenjs.com,REJECT
+  - DOMAIN-SUFFIX,fresnel.vimeocdn.com,REJECT
+  - DOMAIN-SUFFIX,server.ethicalads.io,REJECT
+  - DOMAIN-SUFFIX,adjust.world,REJECT
+  - DOMAIN-SUFFIX,adjust.net.in,REJECT
+  - DOMAIN-SUFFIX,ads-api.x.com,REJECT
+  - DOMAIN-SUFFIX,dynamicyield.com,REJECT
+  - DOMAIN-SUFFIX,jp.livelog.nexon.com,REJECT
+  - DOMAIN-SUFFIX,dewrain.world,REJECT
+  - DOMAIN-SUFFIX,analytics.apis.mcafee.com,REJECT
+  - DOMAIN-SUFFIX,analytics.blender.org,REJECT
+  - DOMAIN-SUFFIX,sct.staticj.top,REJECT
+  - DOMAIN-SUFFIX,sentry.io,REJECT  # 查不到源头，基本肯定是Windows系统相关
+  - DOMAIN-SUFFIX,default.exp-tas.com,REJECT  # 查不到源头，基本肯定是Windows系统相关
+  - DOMAIN-SUFFIX,csp-reporting.cloudflare.com,REJECT
+  - DOMAIN-SUFFIX,assets.customer.io,REJECT
+  - DOMAIN-SUFFIX,cdn.sprig.com,REJECT
+
+  - DOMAIN-SUFFIX,events.gfe.nvidia.com,REJECT
+  - DOMAIN-SUFFIX,telemetry.gfe.nvidia.com,REJECT
+  - DOMAIN-SUFFIX,lightstep.kaizen.nvidia.com,REJECT
+
+  - DOMAIN-SUFFIX,e.reddit.com,REJECT
+  - DOMAIN-SUFFIX,w3-reporting.reddit.com,REJECT
+  - DOMAIN-SUFFIX,w3-reporting-nel.reddit.com,REJECT
+
+  - DOMAIN-SUFFIX,web.facebook.com,REJECT
+  - DOMAIN-SUFFIX,b-graph.facebook.com,REJECT
+  - DOMAIN-SUFFIX,connect.facebook.net,REJECT
+  - DOMAIN-SUFFIX,graph.facebook.com,REJECT
+  - GEOSITE,META,♻️ 美国自动选择Clean
+
+  - DOMAIN-SUFFIX,sensors.shopshops.top,REJECT
+  - DOMAIN-SUFFIX,analytic.shopshops.top,REJECT
+  - DOMAIN-SUFFIX,shopshopslive.com,DIRECT
+  #   - DOMAIN-SUFFIX,vod.shopshops.top,REJECT    # 否则seller中的直播回放播不了。
+
+  #   通过观察本地 Adguard Home总结的。
+  - DOMAIN-SUFFIX,open.kuaishouzt.com,REJECT
+  - DOMAIN-SUFFIX,open.kwaizt.com,REJECT
+
+  - DOMAIN-SUFFIX,ctldl.windowsupdate.com,REJECT
+  - DOMAIN-SUFFIX,s.360.cn,REJECT
+  - DOMAIN-SUFFIX,tr.p.360.cn,REJECT
+  - DOMAIN-SUFFIX,placeholder.com,REJECT
+  - DOMAIN-SUFFIX,beizi.biz,REJECT
+  - DOMAIN-SUFFIX,cdn.cookielaw.org,REJECT
+  - DOMAIN-SUFFIX,analytics-api.smzdm.com,REJECT
+  - DOMAIN-SUFFIX,sonobi.com,REJECT
+  - DOMAIN-SUFFIX,app-measurement.com,REJECT
+  - DOMAIN-SUFFIX,sugar.zhihu.com,REJECT
+  - DOMAIN-SUFFIX,zhihu-web-analytics.zhihu.com,REJECT
+  - DOMAIN-SUFFIX,webvisor.com,REJECT
+  - DOMAIN-SUFFIX,toponadss.com,REJECT
+  - DOMAIN-SUFFIX,app-measurement.com,REJECT
+  - DOMAIN-SUFFIX,getui.net,REJECT
+  - DOMAIN-SUFFIX,fengkongcloud.com,REJECT
+  - DOMAIN-SUFFIX,volceapplog.com,REJECT
+  - DOMAIN-SUFFIX,analytics.wondershare.cc,REJECT
+  - DOMAIN-SUFFIX,qchannel01.cn,REJECT
+  - DOMAIN-SUFFIX,qchannel03.cn,REJECT
+  - DOMAIN-SUFFIX,sdk1xyajs.data.kuiniuca.com,REJECT
+  - DOMAIN-SUFFIX,metrics.icloud.com,REJECT
+  - DOMAIN-SUFFIX,fengkongcloud.com,REJECT
+  - DOMAIN-SUFFIX,www.gaomon.net,REJECT
+  - DOMAIN-SUFFIX,in-addr.arpa,REJECT
+  - DOMAIN-SUFFIX,ctobsnssdk.com,REJECT
+  - DOMAIN-SUFFIX,data-sdk-uuid-log.d.meituan.net,REJECT
+  - DOMAIN-SUFFIX,appsflyersdk.com,REJECT
+  - DOMAIN-SUFFIX,d.skk.moe,REJECT
+  - DOMAIN-SUFFIX,dpi.networkorder.komect.com,REJECT
+  - DOMAIN-SUFFIX,mousegesturesapi.com,REJECT
+  # 淘宝
+  - DOMAIN-SUFFIX,tanx.com,REJECT
+  - DOMAIN-SUFFIX,livemsgconnect.taobao.com,REJECT
+  - DOMAIN-SUFFIX,cloudvideocdn.taobao.com,REJECT
+  - DOMAIN-SUFFIX,umdc.alibabachengdun.net,REJECT
+  #   - DOMAIN-SUFFIX,ut.taobao.com,REJECT
+  #   - DOMAIN-SUFFIX,amdc.m.taobao.com,REJECT
+  - DOMAIN-SUFFIX,cgicol.amap.com,REJECT
+  - DOMAIN-SUFFIX,log.aliyuncs.com,REJECT
+  # 字节、抖音
+  - DOMAIN-SUFFIX,bytegoofy.com,REJECT
+
+  - DOMAIN-SUFFIX,info.pinyin.sogou.com,REJECT
+  - DOMAIN-SUFFIX,ping.pinyin.sogou.com,REJECT
+  - DOMAIN-SUFFIX,ws-keyboard.shouji.sogou.com,REJECT
+  - DOMAIN-SUFFIX,worldwide.sogou.com,REJECT
+  - DOMAIN-SUFFIX,input.shouji.sogou.com,REJECT
+
+  - DOMAIN-SUFFIX,cm.bilibili.com,REJECT
+  - DOMAIN-SUFFIX,data.bilibili.com,REJECT
+  - DOMAIN-SUFFIX,dataflow.biliapi.com,REJECT
+  - DOMAIN-SUFFIX,ali-web-player-tracker.biliapi.net,REJECT
+  - DOMAIN-SUFFIX,hw-v2-web-player-tracker.biliapi.net,REJECT
+  # 腾讯
+  - DOMAIN-SUFFIX,mdt.qq.com,REJECT
+  - DOMAIN-SUFFIX,trace.qq.com,REJECT
+  - DOMAIN-SUFFIX,beacon.qq.com,REJECT
+  - DOMAIN-SUFFIX,vv.video.qq.com,REJECT
+  #   - DOMAIN-SUFFIX,otheve.beacon.qq.com,REJECT
+  #   - DOMAIN-SUFFIX,mp.weixin.qq.com,REJECT   # 屏蔽所有公众号，但是小程序开发平台就登不了了。
+  - DOMAIN-SUFFIX,dns.weixin.qq.com.cn,REJECT
+  - DOMAIN-SUFFIX,badjs.weixinbridge.com,REJECT
+  - DOMAIN-SUFFIX,applog-perf.uc.cn,REJECT
+  - DOMAIN-SUFFIX,px.ucweb.com,REJECT
+  - DOMAIN-SUFFIX,wxsnsdythumb.wxs.qq.com,REJECT
+  #   - DOMAIN-SUFFIX,qpic.cn,REJECT   # 屏蔽所有公众号，但会影响小程序开发者论坛的图片
+  #   - DOMAIN-SUFFIX,wx.qlogo.cn,REJECT   # 屏蔽所有公众号，但会影响小程序开发者论坛的图片
+
+  - DOMAIN-SUFFIX,sp1.baidu.com,REJECT
+  - DOMAIN-SUFFIX,sp3.baidu.com,REJECT
+  - DOMAIN-SUFFIX,ada.baidu.com,REJECT
+  - DOMAIN-SUFFIX,dlswbr.baidu.com,REJECT
+  - DOMAIN-SUFFIX,udpolimenew.baidu.com,REJECT
+  - DOMAIN-SUFFIX,mountain.zhidao.baidu.com,REJECT
+  - DOMAIN-SUFFIX,update.pan.baidu.com,REJECT
+  - DOMAIN-SUFFIX,daup.map.baidu.com,REJECT
+  - DOMAIN-SUFFIX,nj.t.bcsp2p.baidu.com,REJECT
+  - DOMAIN-SUFFIX,cstm.baidu.com,REJECT
+
+  - DOMAIN-SUFFIX,sys.miui.com,REJECT
+  - DOMAIN-SUFFIX,sec.miui.com,REJECT
+  - DOMAIN-SUFFIX,update.miui.com,REJECT
+  - DOMAIN-SUFFIX,tracking.miui.com,REJECT
+  - DOMAIN-SUFFIX,mcc.inf.miui.com,REJECT
+  - DOMAIN-SUFFIX,galleryapi.micloud.xiaomi.net,REJECT
+  - DOMAIN-SUFFIX,statusapi.micloud.xiaomi.net,REJECT
+
+  # 直连
+  # Epic Game中UE项目下载地址
+  - IP-CIDR,2.18.121.77/24,DIRECT,no-resolve
+  # UE Quixel Bridge素材下载地址
+  - DOMAIN-SUFFIX,quixel.com,DIRECT
+  # MetaHuman在Quixel Bridge中的下载地址
+  - DOMAIN-SUFFIX,amazonaws.com,DIRECT
+  # Kiwibank
+  - DOMAIN-SUFFIX,kiwibank.co.nz,DIRECT
+  # 第三方Chatgpt，第一个是网页，第二个是图片，2023年11月17日发现图片的Openai官方的，已经被墙了。
+  - DOMAIN-SUFFIX,plusai.io,DIRECT
+  - DOMAIN-SUFFIX,plusai.me,DIRECT
+  - DOMAIN-SUFFIX,plusaigpt.com,DIRECT
+  - DOMAIN-SUFFIX,oaifree.com,🚀 节点选择 # Linux Do owner / Pandora owner / third party ChatGPT
+  - DOMAIN-SUFFIX,oaipro.com,🚀 节点选择 # Linux Do owner / Pandora owner / third party ChatGPT
+  - DOMAIN-SUFFIX,codecademy.com,DIRECT # This website bans the ip of my VPS
+
+  # AdGuard Home 对屏蔽的域名 故意返回的错误ip，如果不在clash进行Reject，则还是会通过🚀 节点选择 在节点进行请求。
+  # 我已手动在AdGuard Home的配置文件/etc/AdGuardHome.yaml中配置blocking_mode: custom_ip，而该blocking_ipv4被设置为107.173.192.12
+  # 具体配置方法：https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration
+  - IP-CIDR,107.173.192.12/32,REJECT
+  - IP-CIDR6,2620:0:2d0:200::7/32,REJECT # This ipv6 address is a random one
+
+  # VPS
+  - IP-CIDR,107.173.192.13/32,DIRECT,no-resolve # 不知道为什么，大量的匹配这条的被拒绝连接
+  - IP-CIDR,85.194.244.91/32,DIRECT,no-resolve # 不知道为什么，大量的匹配这条的被拒绝连接
+
+  # 淘宝短视频全部屏蔽
+  #   - IP-CIDR,182.50.10.149/16,REJECT
+  #   - IP-CIDR,111.132.33.211/16,REJECT
+  #   - IP-CIDR,111.13.104.104/16,REJECT
+  #   - IP-CIDR,218.11.11.172/16,REJECT
+  #   - IP-CIDR,223.109.146.130/16,REJECT
+  #   - IP-CIDR,183.192.195.199/16,REJECT
+  #   - IP-CIDR,106.11.43.138/16,REJECT
+  #   - IP-CIDR,59.82.113.219/16,REJECT   # 菜鸟裹裹用的，不会禁淘宝视频，会严重影响阿里系功能。
+  #   - IP-CIDR,125.39.135.46/16,REJECT   # B站图片
+  #   - IP-CIDR,123.125.216.236/16,REJECT   # 小米云，不能禁，要不然疯一样请求
+  #   - IP-CIDR,203.209.255.197/16,REJECT    # 支付宝，应该是淘宝视频相关，一定不能禁。
+
+  - GEOSITE,LINKEDIN,🚀 节点选择 # 上面DNS请求到的ip是国内ip
+
+  - GEOSITE,OPENAI,♻️ 台湾自动选择
+  - GEOSITE,STEAM,DIRECT
+  # 节点ip的欺诈分数56分 较高，会使得epicgames要求hcaptcha，但这个验证怎么也通不过。
+  - GEOSITE,EPICGAMES,DIRECT
+  - GEOSITE,CLOUDFLARE,飞鸟云自动选择
+  - GEOSITE,PATREON,飞鸟云自动选择 # 我的节点会使得一部分页面内容无法显示。
+  - GEOSITE,INSTAGRAM,飞鸟云自动选择 # 我的节点会使得一部分页面内容无法显示。
+  #   - DOMAIN-SUFFIX,tbcache.us,飞鸟云自动选择 # 几鸡官网
+  - DOMAIN-SUFFIX,chanel.com,飞鸟云自动选择 # 屏蔽了我的vps ip
+  - DOMAIN-SUFFIX,dior.com,飞鸟云自动选择 # 屏蔽了我的vps ip
+  - DOMAIN-SUFFIX,louisvuitton.com,飞鸟云自动选择 # 屏蔽了我的vps ip
+
+  - DOMAIN-SUFFIX,biglink.to,飞鸟云自动选择 # YouTube channel BLUME Spotify playlist link
+  - DOMAIN-SUFFIX,fanlink.to,飞鸟云自动选择 # YouTube channel BLUME Spotify playlist link
+  - DOMAIN-SUFFIX,howtogeek.com,飞鸟云自动选择 # This website blocks the ip of my VPS
+  - GEOSITE,udemy,飞鸟云自动选择
+  - GEOSITE,spotify,飞鸟云自动选择
+
+  - GEOIP,CN,DIRECT
+  - GEOSITE,CN,DIRECT
+
+  - MATCH,🚀 节点选择
