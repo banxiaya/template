@@ -1,0 +1,4 @@
+#EXTINF:-1 tvg-name="CCTV4K-SDR" tvg-logo="https://gcore.jsdelivr.net/gh/taksssss/tv/icon/CCTV4K.png" group-title=CCTV4K",CCTV4K
+https://freetv.top/m2k/cctv4k.m3u8
+#EXTINF:-1 tvg-name="CCTV4K-HLG" tvg-logo="https://gcore.jsdelivr.net/gh/taksssss/tv/icon/CCTV4K.png" group-title="CCTV4K",CCTV4K
+https://freetv.top/m4k/cctv4k.m3u8
